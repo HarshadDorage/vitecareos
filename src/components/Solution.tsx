@@ -36,11 +36,11 @@ export const Solution: React.FC = () => {
   ];
 
   return (
-    <section id="solutions" className="py-24 overflow-hidden scroll-mt-20">
+    <section id="solutions" className="py-24 overflow-hidden scroll-mt-20 dark:bg-slate-950 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-4">The Solution</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-bold text-slate-900">Three Pillars of Growth.</h3>
+          <h2 className="text-primary dark:text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">The Solution</h2>
+          <h3 className="text-4xl md:text-5xl font-display font-bold text-slate-900 dark:text-white">Three Pillars of Growth.</h3>
         </div>
 
         <div className="space-y-32">
@@ -56,16 +56,16 @@ export const Solution: React.FC = () => {
                 <div className={`inline-flex p-3 rounded-2xl ${sol.color} mb-6 shadow-lg shadow-primary/20`}>
                   {sol.icon}
                 </div>
-                <h4 className="text-slate-500 font-bold mb-2 uppercase tracking-wide text-sm">{sol.title}</h4>
-                <h3 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-6 leading-tight">
+                <h4 className="text-slate-500 dark:text-slate-400 font-bold mb-2 uppercase tracking-wide text-sm">{sol.title}</h4>
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-6 leading-tight">
                   {sol.headline}
                 </h3>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
                   {sol.desc}
                 </p>
                 <ul className="space-y-4">
                   {sol.points.map((p, i) => (
-                    <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+                    <li key={i} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
                       <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />
                       {p}
                     </li>
@@ -80,17 +80,17 @@ export const Solution: React.FC = () => {
                 transition={{ duration: 0.7 }}
                 className="lg:w-1/2 relative"
               >
-                <div className="absolute -inset-4 bg-primary/5 rounded-[2rem] -rotate-2 -z-10"></div>
+                <div className="absolute -inset-4 bg-primary/5 dark:bg-primary/10 rounded-[2rem] -rotate-2 -z-10"></div>
                 <img 
                   src={sol.image} 
                   alt={sol.title} 
-                  className="rounded-2xl shadow-2xl w-full object-cover aspect-video lg:aspect-square"
+                  className="rounded-2xl shadow-2xl w-full object-cover aspect-video lg:aspect-square border border-slate-100 dark:border-slate-800"
                 />
-                <div className="absolute bottom-6 right-6 bg-white p-4 rounded-xl shadow-lg border border-slate-50 flex items-center gap-3">
+                <div className="absolute bottom-6 right-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg border border-slate-50 dark:border-slate-700 flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    {[1,2,3].map(i => <img key={i} src={`https://i.pravatar.cc/100?u=${idx}${i}`} className="w-8 h-8 rounded-full border-2 border-white" alt="Avatar" />)}
+                    {[1,2,3].map(i => <img key={i} src={`https://i.pravatar.cc/100?u=${idx}${i}`} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800" alt="Avatar" />)}
                   </div>
-                  <div className="text-xs font-bold text-slate-700">Joined 200+ clinics</div>
+                  <div className="text-xs font-bold text-slate-700 dark:text-slate-200">Joined 200+ clinics</div>
                 </div>
               </motion.div>
             </div>

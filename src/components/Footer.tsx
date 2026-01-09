@@ -4,32 +4,35 @@ import { Activity, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 interface FooterProps {
   onCtaClick: () => void;
+  onNavigate: (view: 'landing' | 'privacy' | 'terms') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
+export const Footer: React.FC<FooterProps> = ({ onCtaClick, onNavigate }) => {
   const handleScrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-    }
+    onNavigate('landing');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white pt-20 pb-10 border-t dark:border-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <a 
-              href="/" 
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="flex items-center gap-2 mb-6 group"
+            <button 
+              onClick={() => { onNavigate('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="flex items-center gap-2 mb-6 group text-left"
             >
               <div className="bg-primary p-1.5 rounded-lg group-hover:scale-110 transition-transform">
                 <Activity className="text-white w-6 h-6" />
               </div>
               <span className="text-2xl font-display font-bold text-white tracking-tight">VitaCareOS</span>
-            </a>
+            </button>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               The only Growth Operating System designed specifically for modern medical and dental clinics. Scale without the stress.
             </p>
@@ -42,12 +45,13 @@ export const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
           </div>
 
           <div>
-            <h4 className="font-bold mb-6">Solution</h4>
+            <h4 className="font-bold mb-6">Navigation</h4>
             <ul className="space-y-4 text-slate-400 text-sm">
-              <li><a href="#solutions" onClick={(e) => handleScrollToSection(e, 'solutions')} className="hover:text-primary transition-colors">Missed Call Text-Back</a></li>
-              <li><a href="#solutions" onClick={(e) => handleScrollToSection(e, 'solutions')} className="hover:text-primary transition-colors">Clinic Websites</a></li>
-              <li><a href="#solutions" onClick={(e) => handleScrollToSection(e, 'solutions')} className="hover:text-primary transition-colors">Review Management</a></li>
-              <li><button onClick={onCtaClick} className="hover:text-primary transition-colors">Patient Portal</button></li>
+              <li><button onClick={() => { onNavigate('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-primary transition-colors">Home</button></li>
+              <li><button onClick={(e) => handleScrollToSection(e, 'services')} className="hover:text-primary transition-colors">Services</button></li>
+              <li><button onClick={(e) => handleScrollToSection(e, 'pricing')} className="hover:text-primary transition-colors">Pricing</button></li>
+              <li><button onClick={(e) => handleScrollToSection(e, 'how-it-works')} className="hover:text-primary transition-colors">How it Works</button></li>
+              <li><button onClick={(e) => handleScrollToSection(e, 'contact')} className="hover:text-primary transition-colors">Contact</button></li>
             </ul>
           </div>
 
@@ -64,8 +68,8 @@ export const Footer: React.FC<FooterProps> = ({ onCtaClick }) => {
             <h4 className="font-bold mb-6">Legal</h4>
             <ul className="space-y-4 text-slate-400 text-sm">
               <li><button onClick={onCtaClick} className="hover:text-primary transition-colors text-left">Security Standards</button></li>
-              <li><button onClick={onCtaClick} className="hover:text-primary transition-colors text-left">Privacy Policy</button></li>
-              <li><button onClick={onCtaClick} className="hover:text-primary transition-colors text-left">Terms of Service</button></li>
+              <li><button onClick={() => onNavigate('privacy')} className="hover:text-primary transition-colors text-left">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('terms')} className="hover:text-primary transition-colors text-left">Terms of Service</button></li>
               <li><button onClick={onCtaClick} className="hover:text-primary transition-colors text-left">Accessibility</button></li>
             </ul>
           </div>

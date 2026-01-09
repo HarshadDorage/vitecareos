@@ -23,7 +23,7 @@ export const Problem: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-softGray scroll-mt-20">
+    <section id="how-it-works" className="py-24 bg-softGray dark:bg-slate-900 scroll-mt-20 transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,10 +32,10 @@ export const Problem: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">
             Is Your Front Desk Overwhelmed?
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-600 dark:text-slate-400">
             Running a clinic is hard. Managing patient growth shouldn't be. Most practices struggle with these three silent growth killers.
           </p>
         </motion.div>
@@ -48,13 +48,13 @@ export const Problem: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center text-center group"
+              className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group"
             >
-              <div className="mb-6 p-4 rounded-xl bg-orange-50 group-hover:bg-orange-100 transition-colors">
+              <div className="mb-6 p-4 rounded-xl bg-orange-50 dark:bg-orange-900/10 group-hover:bg-orange-100 dark:group-hover:bg-orange-900/20 transition-colors">
                 {prob.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{prob.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{prob.desc}</p>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{prob.title}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{prob.desc}</p>
             </motion.div>
           ))}
         </div>

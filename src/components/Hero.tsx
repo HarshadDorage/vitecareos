@@ -41,8 +41,8 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
   };
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
-      <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/2 bg-blue-50/50 rounded-bl-full blur-3xl opacity-50" />
+    <section className="relative pt-32 pb-20 overflow-hidden dark:bg-slate-950">
+      <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/2 bg-blue-50/50 dark:bg-blue-900/10 rounded-bl-full blur-3xl opacity-50" />
       
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -52,17 +52,17 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-blue-100">
+              <span className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-blue-100 dark:border-blue-800">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
                 Now Serving US Medical & Dental Clinics
               </span>
-              <h1 className="text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-[1.15] mb-6">
-                The Growth <span className="text-primary underline decoration-blue-100 decoration-8 underline-offset-4">Operating System</span> for Modern Clinics.
+              <h1 className="text-5xl lg:text-6xl font-display font-bold text-slate-900 dark:text-white leading-[1.15] mb-6">
+                The Growth <span className="text-primary dark:text-blue-500 underline decoration-blue-100 dark:decoration-blue-900/50 decoration-8 underline-offset-4">Operating System</span> for Modern Clinics.
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
                 Stop losing patients to voicemail. We automate your appointments, website, and reputation so you can focus on care.
               </p>
             </motion.div>
@@ -82,9 +82,9 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
               </button>
               <button 
                 onClick={handleScrollToSolutions}
-                className="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2"
               >
-                <Play className="w-5 h-5 fill-slate-700" />
+                <Play className="w-5 h-5 fill-slate-700 dark:fill-slate-200" />
                 View Demo
               </button>
             </motion.div>
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="pt-8 border-t border-slate-100"
+              className="pt-8 border-t border-slate-100 dark:border-slate-800"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-6">
                 <div className="flex flex-col">
@@ -101,18 +101,18 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="w-4 h-4 text-amber-400 fill-amber-400" />
                     ))}
-                    <span className="ml-2 text-sm font-bold text-slate-900">4.9/5</span>
+                    <span className="ml-2 text-sm font-bold text-slate-900 dark:text-slate-100">4.9/5</span>
                   </div>
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                     Average Client Growth Rating
                   </p>
                 </div>
-                <div className="hidden sm:block w-px h-8 bg-slate-200" />
+                <div className="hidden sm:block w-px h-8 bg-slate-200 dark:bg-slate-800" />
                 <div className="flex items-center gap-3">
-                  <div className="bg-blue-50 px-2 py-1 rounded text-[10px] font-bold text-primary border border-blue-100 flex items-center gap-1">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded text-[10px] font-bold text-primary dark:text-blue-400 border border-blue-100 dark:border-blue-800 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> SECURE & ENCRYPTED
                   </div>
-                  <p className="text-xs font-medium text-slate-500">Trusted by 500+ US Clinics</p>
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Trusted by 500+ US Clinics</p>
                 </div>
               </div>
 
@@ -129,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${logo.id}/120/40?grayscale`;
                       }}
-                      className="h-7 w-auto opacity-30 group-hover:opacity-60 transition-opacity duration-300"
+                      className="h-7 w-auto opacity-30 dark:opacity-20 group-hover:opacity-60 dark:group-hover:opacity-50 transition-opacity duration-300 invert dark:invert-0"
                     />
                   </motion.div>
                 ))}
