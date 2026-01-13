@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Activity, Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -46,32 +45,60 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick, onHomeClick, isLandi
     { name: 'Contact', href: 'contact' },
   ];
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const scrollToSection = useCallback((id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navbarHeight = 80; // Height of your navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
+  const handleLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    if (!isLanding) {
-      onHomeClick();
+    
+    // Close mobile menu first
+    setIsMobileMenuOpen(false);
+    
+    // For mobile, add a small delay to ensure menu is closed before scrolling
+    if (window.innerWidth < 768) {
       setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          window.scrollTo({ top: element.offsetTop - 80, behavior: 'smooth' });
+        if (!isLanding) {
+          onHomeClick();
+          setTimeout(() => scrollToSection(id), 100);
+        } else {
+          scrollToSection(id);
         }
-      }, 100);
+      }, 300); // Wait for menu animation to complete
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        window.scrollTo({ top: element.offsetTop - 80, behavior: 'smooth' });
+      if (!isLanding) {
+        onHomeClick();
+        setTimeout(() => scrollToSection(id), 100);
+      } else {
+        scrollToSection(id);
       }
     }
-    setIsMobileMenuOpen(false);
-  };
+  }, [isLanding, onHomeClick, scrollToSection]);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    onHomeClick();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isLanding ? 'glass border-b border-slate-100 dark:border-slate-800 py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         <button 
-          onClick={(e) => { e.preventDefault(); onHomeClick(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={handleHomeClick}
           className="flex items-center gap-2 group text-left"
         >
           <div className="bg-primary p-1.5 rounded-lg shadow-md group-hover:scale-110 transition-transform">
@@ -119,6 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick, onHomeClick, isLandi
           <button 
             className="text-slate-900 dark:text-slate-100 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -131,21 +159,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick, onHomeClick, isLandi
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 overflow-hidden"
+            className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 overflow-hidden absolute top-full left-0 right-0"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={`#${link.href}`}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-lg text-slate-700 dark:text-slate-300 font-medium hover:text-primary transition-colors"
+                <button
+                  key={link.name}
+                  onClick={(e) => handleLinkClick(e as any, link.href)}
+                  className="text-lg text-slate-700 dark:text-slate-300 font-medium hover:text-primary transition-colors text-left py-2"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
               <button 
-                onClick={onCtaClick}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setTimeout(() => onCtaClick(), 300);
+                }}
                 className="bg-primary text-white w-full py-3 rounded-xl font-semibold mt-2 shadow-lg shadow-primary/10"
               >
                 Book a Demo

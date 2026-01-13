@@ -33,6 +33,8 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
     { name: 'MB2 Dental', id: 'mb2' }
   ];
 
+  
+
   const handleScrollToSolutions = () => {
     const el = document.getElementById('solutions');
     if (el) {
@@ -112,11 +114,11 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
                   <div className="bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded text-[10px] font-bold text-primary dark:text-blue-400 border border-blue-100 dark:border-blue-800 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> SECURE & ENCRYPTED
                   </div>
-                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Trusted by 500+ US Clinics</p>
+                  {/* <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Trusted by 500+ US Clinics</p> */}
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
+              {/* <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
                 {clinicLogos.map((logo) => (
                   <motion.div 
                     key={logo.id} 
@@ -133,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ onAuditClick }) => {
                     />
                   </motion.div>
                 ))}
-              </div>
+              </div> */}
             </motion.div>
           </div>
 

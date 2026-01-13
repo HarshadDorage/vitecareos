@@ -12,7 +12,7 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
     {
       name: "Essential Growth",
       price: "349",
-      tagline: "Stop losing patients to missed calls.",
+      tagline: "Fix your reputation and never miss a call.",
       icon: <Zap className="w-6 h-6 text-slate-500" />,
       colorClass: "border-slate-200 dark:border-slate-700",
       headerBg: "bg-slate-50 dark:bg-slate-900",
@@ -20,18 +20,18 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
       ctaClass: "bg-slate-900 dark:bg-slate-100 dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white",
       features: [
         { text: "Auto-Missed Call Text Back", included: true },
-        { text: "2-Way SMS & Email Communication", included: true },
-        { text: "Google Review Automation", included: true },
-        { text: "Mobile App Access", included: true },
-        { text: "Google My Business Chat", included: true },
-        { text: "Website Chat Widget", included: false },
-        { text: "Appointment Booking", included: false },
+        { text: "Google Profile Setup & Management", included: true },
+        { text: "Auto-Google Review Requests", included: true },
+        { text: "2-Way SMS & Emailing", included: true },
+        { text: "Online Appointment Booking", included: false },
+        { text: "Website Development & Maintenance", included: false },
+        { text: "Weekly/Monthly Reports", included: false },
       ]
     },
     {
       name: "Professional Suite",
       price: "599",
-      tagline: "Automate your front desk and book more appointments.",
+      tagline: "Complete website & booking system makeover.",
       icon: <Crown className="w-6 h-6 text-primary" />,
       colorClass: "border-primary ring-4 ring-primary/5 scale-105 z-10",
       headerBg: "bg-blue-50 dark:bg-blue-900/20",
@@ -41,18 +41,18 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
       ctaClass: "bg-primary shadow-xl shadow-primary/20 hover:bg-[#004494]",
       features: [
         { text: "Everything in Essential Growth", included: true },
-        { text: "Website Chat Widget", included: true },
-        { text: "Calendar & Appointment Booking", included: true },
-        { text: "Social Media Planner", included: true },
-        { text: "Email Newsletter Builder", included: true },
-        { text: "Basic Patient Reactivation", included: true },
-        { text: "Funnel & Landing Page Builder", included: false },
+        { text: "Custom Website Development", included: true }, // Big Value
+        { text: "Website Maintenance & Hosting", included: true },
+        { text: "Online Appointment Booking", included: true },
+        { text: "Weekly Activity Reports", included: true },
+        { text: "Monthly Performance Report", included: false },
+        { text: "VIP Priority Support", included: false },
       ]
     },
     {
       name: "Elite Expansion",
       price: "799",
-      tagline: "Complete patient acquisition system for serious clinics.",
+      tagline: "VIP management & detailed performance tracking.",
       icon: <Rocket className="w-6 h-6 text-amber-500" />,
       colorClass: "border-slate-900 dark:border-amber-500/50 bg-slate-900 dark:bg-slate-950 text-white",
       headerBg: "bg-white/5",
@@ -61,12 +61,12 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
       isPremium: true,
       features: [
         { text: "Everything in Professional Suite", included: true },
-        { text: "Funnel & Landing Page Builder", included: true },
-        { text: "Advanced Workflow Automations", included: true },
-        { text: "Database Reactivation Campaign", included: true },
-        { text: "Insurance/Intake Form Builder", included: true },
-        { text: "Priority Email Support", included: true },
-        { text: "Dedicated Success Manager", included: true },
+        { text: "Monthly Deep-Dive Performance Report", included: true },
+        { text: "Priority Website Updates (24h Turnaround)", included: true },
+        { text: "Dedicated Account Manager", included: true },
+        { text: "Advanced Reputation Strategy", included: true },
+        { text: "Quarterly Business Review", included: true },
+        { text: "VIP Priority Support", included: true },
       ]
     }
   ];
@@ -143,7 +143,7 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-6 px-8 py-4 bg-white dark:bg-slate-800 rounded-full border border-slate-100 dark:border-slate-700 shadow-sm">
             <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-bold">
               <ShieldCheck className="w-5 h-5 text-secondary" />
@@ -154,7 +154,7 @@ export const Pricing: React.FC<PricingProps> = ({ onCtaClick }) => {
               30-Day Money-Back Guarantee • Cancel Anytime
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
